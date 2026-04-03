@@ -85,7 +85,7 @@
         <span class="btn-sub">Submit a new work order</span>
       </div>
     </a>
-    <button class="btn btn-smartrak" onclick="openLeadConnector()">
+    <a class="btn btn-smartrak" href="https://app.gohighlevel.com">
       <div class="icon-wrap">
         <svg viewBox="0 0 24 24" fill="white">
           <path d="M13 2L4.5 13.5H11L10 22L20.5 9.5H14L13 2Z"/>
@@ -95,35 +95,7 @@
         <span class="btn-label">SMART Trak</span>
         <span class="btn-sub">Open LeadConnector app</span>
       </div>
-    </button>
+    </a>
   </div>
-  <script>
-    function openLeadConnector() {
-      var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
-      var isAndroid = /android/i.test(navigator.userAgent);
-      if (isIOS) {
-        // Try to open app via universal link first
-        // then fall back to correct App Store listing after 2s if app doesn't open
-        var appStoreUrl = 'https://apps.apple.com/us/app/lead-connector/id1564302502';
-        var now = Date.now();
-        window.location.href = 'leadconnector://';
-        setTimeout(function() {
-          // Only redirect to App Store if the page is still visible
-          // (if app opened, page goes to background and timer fires but user won't see it)
-          if (Date.now() - now < 3000) {
-            window.location.href = appStoreUrl;
-          }
-        }, 2000);
-      } else if (isAndroid) {
-        var appStoreUrl = 'https://play.google.com/store/apps/details?id=com.gohighlevel.leadconnector';
-        window.location.href = 'leadconnector://';
-        setTimeout(function() {
-          window.location.href = appStoreUrl;
-        }, 2000);
-      } else {
-        window.open('https://app.gohighlevel.com', '_blank');
-      }
-    }
-  </script>
 </body>
 </html>
