@@ -102,23 +102,24 @@
       var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
       var isAndroid = /android/i.test(navigator.userAgent);
       if (isIOS) {
-        var iframe = document.createElement('iframe');
-        iframe.style.display = 'none';
-        iframe.src = 'leadconnector://';
-        document.body.appendChild(iframe);
+        // Try to open app via universal link first
+        // then fall back to correct App Store listing after 2s if app doesn't open
+        var appStoreUrl = 'https://apps.apple.com/us/app/lead-connector/id1564302502';
+        var now = Date.now();
+        window.location.href = 'leadconnector://';
         setTimeout(function() {
-          document.body.removeChild(iframe);
-          window.location.href = 'https://apps.apple.com/us/app/leadconnector/id1615461388';
-        }, 1500);
+          // Only redirect to App Store if the page is still visible
+          // (if app opened, page goes to background and timer fires but user won't see it)
+          if (Date.now() - now < 3000) {
+            window.location.href = appStoreUrl;
+          }
+        }, 2000);
       } else if (isAndroid) {
-        var iframe = document.createElement('iframe');
-        iframe.style.display = 'none';
-        iframe.src = 'leadconnector://';
-        document.body.appendChild(iframe);
+        var appStoreUrl = 'https://play.google.com/store/apps/details?id=com.gohighlevel.leadconnector';
+        window.location.href = 'leadconnector://';
         setTimeout(function() {
-          document.body.removeChild(iframe);
-          window.location.href = 'https://play.google.com/store/apps/details?id=com.gohighlevel.leadconnector';
-        }, 1500);
+          window.location.href = appStoreUrl;
+        }, 2000);
       } else {
         window.open('https://app.gohighlevel.com', '_blank');
       }
