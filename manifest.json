@@ -1,24 +1,24 @@
 {
-    "name": "Alpine Sheet Metal Systems",
-    "short_name": "Alpine SMS",
-    "description": "Alpine Sheet Metal Systems Service Request",
-    "start_url": "/",
-    "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#1B4F8A",
-    "orientation": "portrait",
-    "icons": [
-          {
-                  "src": "icons/icon-192.png",
-                  "sizes": "192x192",
-                  "type": "image/png",
-                  "purpose": "any"
-          },
-          {
-                  "src": "icons/icon-512.png",
-                  "sizes": "512x512",
-                  "type": "image/png",
-                  "purpose": "any maskable"
-          }
-    ]
+  "name": "Alpine Sheet Metal Systems",
+  "short_name": "Alpine SMS",
+  "description": "Alpine Sheet Metal Systems Service Request",
+  "start_url": "/alpine-sheet-metal-form/",
+  "display": "standalone",
+  "background_color": "#12345C",
+  "theme_color": "#1B4F8A",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
 }
