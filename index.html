@@ -10,9 +10,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#12345C" />
   <link rel="manifest" href="manifest.json" />
-  <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png" />
-  <link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/Alpine%20A-v2.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="icons/Alpine%20A-v2.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/Alpine%20A-v2.png" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { height: 100%; }
@@ -66,7 +66,7 @@
 </head>
 <body>
   <div class="logo-area">
-    <img src="icons/icon-180.png" alt="Alpine Sheet Metal Logo" />
+    <img src="icons/Alpine%20A-v2.png" alt="Alpine Sheet Metal Logo" />
     <h1>Alpine Sheet Metal<br>Systems</h1>
     <p>Field Operations</p>
   </div>
@@ -102,12 +102,10 @@
       var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
       var isAndroid = /android/i.test(navigator.userAgent);
       if (isIOS) {
-        // Use hidden iframe trick to avoid Safari blocking the scheme
         var iframe = document.createElement('iframe');
         iframe.style.display = 'none';
         iframe.src = 'leadconnector://';
         document.body.appendChild(iframe);
-        // If app not installed, fall back to App Store after 1.5s
         setTimeout(function() {
           document.body.removeChild(iframe);
           window.location.href = 'https://apps.apple.com/us/app/leadconnector/id1615461388';
