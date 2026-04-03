@@ -85,7 +85,7 @@
         <span class="btn-sub">Submit a new work order</span>
       </div>
     </a>
-    <a class="btn btn-smartrak" href="https://app.leadconnectorhq.com/login">
+    <button class="btn btn-smartrak" onclick="openLeadConnector()">
       <div class="icon-wrap">
         <svg viewBox="0 0 24 24" fill="white">
           <path d="M13 2L4.5 13.5H11L10 22L20.5 9.5H14L13 2Z"/>
@@ -95,7 +95,36 @@
         <span class="btn-label">SMART Trak</span>
         <span class="btn-sub">Open LeadConnector app</span>
       </div>
-    </a>
+    </button>
   </div>
+  <script>
+    function openLeadConnector() {
+      var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+      var isAndroid = /android/i.test(navigator.userAgent);
+      if (isIOS) {
+        // Use hidden iframe trick to avoid Safari blocking the scheme
+        var iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = 'leadconnector://';
+        document.body.appendChild(iframe);
+        // If app not installed, fall back to App Store after 1.5s
+        setTimeout(function() {
+          document.body.removeChild(iframe);
+          window.location.href = 'https://apps.apple.com/us/app/leadconnector/id1615461388';
+        }, 1500);
+      } else if (isAndroid) {
+        var iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = 'leadconnector://';
+        document.body.appendChild(iframe);
+        setTimeout(function() {
+          document.body.removeChild(iframe);
+          window.location.href = 'https://play.google.com/store/apps/details?id=com.gohighlevel.leadconnector';
+        }, 1500);
+      } else {
+        window.open('https://app.gohighlevel.com', '_blank');
+      }
+    }
+  </script>
 </body>
 </html>
